@@ -102,6 +102,8 @@ public class FORM_LOGIN extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         try {
+            
+            //lalalalalalalal
             Employee e = new Employee();
             e.setLogin(txtLogin.getText());
             e.setPassword(txtPassword.getText());
