@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package GUI.brand;
 
 import GUI.polish.GUI_polish;
 import GUI.polish.GUI_polish_insert;
+import basicas.person.Employee;
 import basicas.polish.Brand;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -18,18 +18,26 @@ import facade.Facade;
  * @author Livia
  */
 import java.util.List;
+
 public class GUI_Brands extends javax.swing.JFrame {
 
     List<Brand> brandList;
-   
+    Employee logged;
+
     public GUI_Brands() {
         initComponents();
-          listarMarcas();
+        listarMarcas();
         this.setLocationRelativeTo(null);
     }
-       
-    
-    private void listarMarcas(){
+
+    public GUI_Brands(Employee emp) {
+        initComponents();
+        listarMarcas();
+        this.setLocationRelativeTo(null);
+        this.logged = emp;
+    }
+
+    private void listarMarcas() {
         try {
             Facade f = new Facade();
             this.brandList = f.listAllBrand();
@@ -46,7 +54,7 @@ public class GUI_Brands extends javax.swing.JFrame {
         }
     }
 
-       @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -198,54 +206,64 @@ public class GUI_Brands extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // seleciona a marca da lista para editar
-        if (brandList.size() <= 0) {
-            JOptionPane.showMessageDialog(rootPane, "Não há marcas cadastradas para editar");
-        } else if (jTableTabelaMarcas.getSelectedRow() < 0) {
-            JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
+        if (!logged.isAdmin()) {
+            JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
         } else {
-            Brand m = brandList.get(jTableTabelaMarcas.getSelectedRow());
-            new GUI_Brand_update(m).setVisible(true);
-            this.dispose();
+            if (brandList.size() <= 0) {
+                JOptionPane.showMessageDialog(rootPane, "Não há marcas cadastradas para editar");
+            } else if (jTableTabelaMarcas.getSelectedRow() < 0) {
+                JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
+            } else {
+                Brand m = brandList.get(jTableTabelaMarcas.getSelectedRow());
+                new GUI_Brand_update(m).setVisible(true);
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // aciona método para exclusão de marcas
-        Facade fa = new Facade();
-        if (brandList.size() <= 0) {
-            JOptionPane.showMessageDialog(rootPane, "Não há marcas cadastradas para excluir");
-        } else if (jTableTabelaMarcas.getSelectedRow() < 0) {
-            JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
+        if (!logged.isAdmin()) {
+            JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
         } else {
-            try {
-                int opc = JOptionPane.showConfirmDialog(rootPane, "Deseja excluir "
-                    + this.brandList.get(jTableTabelaMarcas.getSelectedRow()).getName()
-                    +" da lista?", "Excluir", JOptionPane.OK_CANCEL_OPTION);
-                if (opc == JOptionPane.YES_OPTION) {
-                    fa.delete(this.brandList.get(jTableTabelaMarcas.getSelectedRow()));
-                    JOptionPane.showMessageDialog(rootPane, "Marca excluída com sucesso");
-                    listarMarcas();
+            Facade fa = new Facade();
+            if (brandList.size() <= 0) {
+                JOptionPane.showMessageDialog(rootPane, "Não há marcas cadastradas para excluir");
+            } else if (jTableTabelaMarcas.getSelectedRow() < 0) {
+                JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
+            } else {
+                try {
+                    int opc = JOptionPane.showConfirmDialog(rootPane, "Deseja excluir "
+                            + this.brandList.get(jTableTabelaMarcas.getSelectedRow()).getName()
+                            + " da lista?", "Excluir", JOptionPane.OK_CANCEL_OPTION);
+                    if (opc == JOptionPane.YES_OPTION) {
+                        fa.delete(this.brandList.get(jTableTabelaMarcas.getSelectedRow()));
+                        JOptionPane.showMessageDialog(rootPane, "Marca excluída com sucesso");
+                        listarMarcas();
 
-                } else {
+                    } else {
+                    }
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(rootPane, ex.getMessage());
                 }
-
-            }  catch (Exception ex) {
-                JOptionPane.showMessageDialog(rootPane, ex.getMessage());
             }
         }
-
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         // TODO add your handling code here:
-        dispose();
-        new GUI_Brand_insert().setVisible(true);
+        if (!logged.isAdmin()) {
+            JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
+        } else {
+//            dispose();
+            new GUI_Brand_insert().setVisible(true);
+        }
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
         dispose();
-         new GUI_polish().setVisible(true);
+        new GUI_polish().setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**

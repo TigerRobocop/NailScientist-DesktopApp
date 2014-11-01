@@ -101,9 +101,8 @@ public class FORM_LOGIN extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        try {
-            //coisinha
-            //lalalalalalalal
+        try {            
+        
             Employee e = new Employee();
             e.setLogin(txtLogin.getText());
             e.setPassword(txtPassword.getText());
@@ -112,6 +111,7 @@ public class FORM_LOGIN extends javax.swing.JFrame {
             Employee logged = f.isLoginValid(e);
 
             if (logged != null) {
+                JOptionPane.showMessageDialog(rootPane, "Bem vindo, " + logged.getName() +"!");
                 this.dispose();
                 new Main(logged).setVisible(true);
             }

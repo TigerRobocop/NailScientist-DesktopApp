@@ -97,7 +97,6 @@
     <Component class="javax.swing.JButton" name="jButtonAdicionar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Adicionar novo acabamento"/>
-        <Property name="actionCommand" type="java.lang.String" value="Adicionar novo acabamento"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAdicionarActionPerformed"/>

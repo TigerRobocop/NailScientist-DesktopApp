@@ -7,6 +7,7 @@ package GUI.polish;
 
 import GUI.brand.GUI_Brands;
 import GUI.finish.GUI_Finish;
+import basicas.person.Employee;
 import basicas.polish.Brand;
 import basicas.polish.Finish;
 import basicas.polish.Polish;
@@ -22,8 +23,20 @@ import javax.swing.table.DefaultTableModel;
 public class GUI_polish extends javax.swing.JFrame {
 
     List<Polish> polishList;
+    Employee logged;
 
     public GUI_polish() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new String[]{"Marca", "Nome", "Acabamento", "Descrição da Cor"});
+        jTableTabela.setModel(modelo);
+        listAll();
+    }
+
+    public GUI_polish(Employee emp) {
+        this.logged = emp;
         initComponents();
         this.setLocationRelativeTo(null);
 
@@ -294,8 +307,6 @@ public class GUI_polish extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
 
         }
-
-        // }
     }//GEN-LAST:event_btnBuscaFiltroActionPerformed
 
     private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
@@ -304,8 +315,14 @@ public class GUI_polish extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGoBackActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // exclui o esmalte selecionado na tabela
+        if (logged.isAdmin()) {
+            deleteLine();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
+        }        
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private void deleteLine(){
         Facade fa = new Facade();
         if (polishList.size() <= 0) {
             JOptionPane.showMessageDialog(rootPane, "Não há esmaltes cadastrados para excluir");
@@ -324,10 +341,13 @@ public class GUI_polish extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, fe.getMessage());
             }
         }
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
+    }
+    
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        if (polishList.size() <= 0) {
+        if (!logged.isAdmin()) {
+            JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
+        } else {
+            if (polishList.size() <= 0) {
             JOptionPane.showMessageDialog(rootPane, "Não há esmaltes cadastrados para alterar");
         } else if (jTableTabela.getSelectedRow() < 0) {
             JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
@@ -336,21 +356,26 @@ public class GUI_polish extends javax.swing.JFrame {
             new GUI_polish_update(s).setVisible(true);
             this.dispose();
         }
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnNewPolishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewPolishActionPerformed
-        new GUI_polish_insert().setVisible(true);
-        this.dispose();
+        if (logged.isAdmin()) {
+            new GUI_polish_insert().setVisible(true);
+//            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
+        }
     }//GEN-LAST:event_btnNewPolishActionPerformed
 
     private void btnBrandMrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrandMrgActionPerformed
         dispose();
-        new GUI_Brands().setVisible(true);
+        new GUI_Brands(logged).setVisible(true);
     }//GEN-LAST:event_btnBrandMrgActionPerformed
 
     private void btnFinishMgrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishMgrActionPerformed
         dispose();
-        new GUI_Finish().setVisible(true);
+        new GUI_Finish(logged).setVisible(true);
     }//GEN-LAST:event_btnFinishMgrActionPerformed
 
     /**

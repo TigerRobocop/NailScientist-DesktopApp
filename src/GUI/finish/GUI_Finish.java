@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package GUI.finish;
 
 import GUI.polish.GUI_polish;
+import basicas.person.Employee;
 import basicas.polish.Finish;
 import facade.Facade;
 import java.util.List;
@@ -19,15 +19,23 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUI_Finish extends javax.swing.JFrame {
 
-  List<Finish> finishList;
-  
+    List<Finish> finishList;
+    Employee logged;
+
     public GUI_Finish() {
         initComponents();
-         listarFinalizacao();
+        listarFinalizacao();
         this.setLocationRelativeTo(null);
     }
 
-     private void listarFinalizacao(){
+    public GUI_Finish(Employee emp) {
+        initComponents();
+        listarFinalizacao();
+        this.setLocationRelativeTo(null);
+        this.logged = emp;
+    }
+
+    private void listarFinalizacao() {
         try {
             Facade f = new Facade();
             Finish fi = new Finish();
@@ -43,8 +51,8 @@ public class GUI_Finish extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
         }
-     }
-    
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -181,13 +189,17 @@ public class GUI_Finish extends javax.swing.JFrame {
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
         this.dispose();
-         new GUI_polish().setVisible(true);
+        new GUI_polish().setVisible(true);
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
         // TODO add your handling code here:
-        dispose();
-        new GUI_finish_insert().setVisible(true);
+        if (!logged.isAdmin()) {
+            JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
+        } else {
+//            dispose();
+            new GUI_finish_insert().setVisible(true);
+        }
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
 
     private void txtFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFilterActionPerformed
@@ -217,36 +229,44 @@ public class GUI_Finish extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBuscaActionPerformed
 
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
-        if (finishList.size() <= 0) {
-            JOptionPane.showMessageDialog(rootPane, "Não há finalizações cadastradas para alterar");
-        } else if (jTableTabelaFinalizacao.getSelectedRow() < 0) {
-            JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
+        if (!logged.isAdmin()) {
+            JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
         } else {
-            Finish f  = finishList.get(jTableTabelaFinalizacao.getSelectedRow());
-            new GUI_finish_update(f).setVisible(true);
-            this.dispose();
+            if (finishList.size() <= 0) {
+                JOptionPane.showMessageDialog(rootPane, "Não há finalizações cadastradas para alterar");
+            } else if (jTableTabelaFinalizacao.getSelectedRow() < 0) {
+                JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
+            } else {
+                Finish f = finishList.get(jTableTabelaFinalizacao.getSelectedRow());
+                new GUI_finish_update(f).setVisible(true);
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        Facade fa = new Facade();
-        if (finishList.size() <= 0) {
-            JOptionPane.showMessageDialog(rootPane, "Não há finalizações cadastradas para excluir");
-        } else if (jTableTabelaFinalizacao.getSelectedRow() < 0) {
-            JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
+        if (!logged.isAdmin()) {
+            JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
         } else {
-            try {
-                int opc = JOptionPane.showConfirmDialog(rootPane, "Deseja excluir esta finalização da lista?", "Excluir", JOptionPane.OK_CANCEL_OPTION);
-                if (opc == JOptionPane.YES_OPTION) {
-                    fa.delete(this.finishList.get(jTableTabelaFinalizacao.getSelectedRow()));
-                    JOptionPane.showMessageDialog(rootPane, "Finalização excluída com sucesso");
-                    listarFinalizacao();
+            Facade fa = new Facade();
+            if (finishList.size() <= 0) {
+                JOptionPane.showMessageDialog(rootPane, "Não há finalizações cadastradas para excluir");
+            } else if (jTableTabelaFinalizacao.getSelectedRow() < 0) {
+                JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
+            } else {
+                try {
+                    int opc = JOptionPane.showConfirmDialog(rootPane, "Deseja excluir esta finalização da lista?", "Excluir", JOptionPane.OK_CANCEL_OPTION);
+                    if (opc == JOptionPane.YES_OPTION) {
+                        fa.delete(this.finishList.get(jTableTabelaFinalizacao.getSelectedRow()));
+                        JOptionPane.showMessageDialog(rootPane, "Finalização excluída com sucesso");
+                        listarFinalizacao();
 
-                } else {
+                    } else {
+                    }
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(rootPane, ex.getMessage());
                 }
-
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(rootPane, ex.getMessage());
             }
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
