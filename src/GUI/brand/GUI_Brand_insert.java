@@ -20,6 +20,7 @@ public class GUI_Brand_insert extends javax.swing.JFrame {
      * Creates new form GUI_Brand_insert
      */
     GUI_polish_insert formParent;
+    GUI_Brands formParentBrand;
 
     public GUI_Brand_insert() {
         initComponents();
@@ -28,6 +29,12 @@ public class GUI_Brand_insert extends javax.swing.JFrame {
 
     public GUI_Brand_insert(GUI_polish_insert form) {
         this.formParent = form;
+        initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    
+    public GUI_Brand_insert(GUI_Brands form){
+        this.formParentBrand = form;
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -125,9 +132,13 @@ public class GUI_Brand_insert extends javax.swing.JFrame {
                 if (formParent != null) {
                     formParent.loadBrands();
                     dispose();
-                } else {
+                }else if (formParentBrand != null) {
+                    formParentBrand.listarMarcas();
                     dispose();
-                    new GUI_Brands().setVisible(true);
+                }  
+                else {
+                    dispose();
+                   // new GUI_Brands().setVisible(true);
                 }
 
             }

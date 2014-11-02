@@ -37,7 +37,7 @@ public class GUI_Brands extends javax.swing.JFrame {
         this.logged = emp;
     }
 
-    private void listarMarcas() {
+    public void listarMarcas() {
         try {
             Facade f = new Facade();
             this.brandList = f.listAllBrand();
@@ -256,7 +256,7 @@ public class GUI_Brands extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
         } else {
 //            dispose();
-            new GUI_Brand_insert().setVisible(true);
+            new GUI_Brand_insert(this).setVisible(true);
         }
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
