@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package GUI.finish;
 
 import GUI.polish.GUI_polish_insert;
@@ -18,14 +17,21 @@ import javax.swing.JOptionPane;
 public class GUI_finish_insert extends javax.swing.JFrame {
 
     GUI_polish_insert formParent;
-    
-      public GUI_finish_insert() {
+    GUI_Finish formParentFinish;
+
+    public GUI_finish_insert() {
         initComponents();
-            this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
     }
-      
-      public GUI_finish_insert(GUI_polish_insert form) {
-       this.formParent = form;
+
+    public GUI_finish_insert(GUI_polish_insert form) {
+        this.formParent = form;
+        initComponents();
+        this.setLocationRelativeTo(null);
+    }
+
+    public GUI_finish_insert(GUI_Finish form) {
+        this.formParentFinish = form;
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -104,7 +110,7 @@ public class GUI_finish_insert extends javax.swing.JFrame {
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
         dispose();
-       // new GUI_Finish().setVisible(true);
+        // new GUI_Finish().setVisible(true);
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonSalvarFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarFinishActionPerformed
@@ -121,18 +127,22 @@ public class GUI_finish_insert extends javax.swing.JFrame {
             int opc = JOptionPane.showConfirmDialog(rootPane, "Acabamento registrado com sucesso \nDeseja cadastrar outro Acabamento?", "Cadastro", JOptionPane.OK_CANCEL_OPTION);
             if (opc == JOptionPane.YES_OPTION) {
             } else {
-                if(formParent != null){
-                   formParent.loadFinish();
-                   dispose();
-                }else{
-                dispose();
-                new GUI_Finish().setVisible(true);
-                }            
+                if (formParent != null) {
+                    formParent.loadFinish();
+                    dispose();
+                }
+                if (formParentFinish != null) {
+                    formParentFinish.listarFinalizacao();
+                    dispose();
+                } else {
+                    dispose();
+//                    new GUI_Finish().setVisible(true);
+                }
             }
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());;
-        } 
+        }
 
         jTextFieldNomeFinish.setText("");
     }//GEN-LAST:event_jButtonSalvarFinishActionPerformed

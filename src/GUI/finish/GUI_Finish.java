@@ -35,7 +35,7 @@ public class GUI_Finish extends javax.swing.JFrame {
         this.logged = emp;
     }
 
-    private void listarFinalizacao() {
+    public void listarFinalizacao() {
         try {
             Facade f = new Facade();
             Finish fi = new Finish();
@@ -189,7 +189,7 @@ public class GUI_Finish extends javax.swing.JFrame {
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new GUI_polish().setVisible(true);
+//        new GUI_polish().setVisible(true);
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
@@ -198,7 +198,7 @@ public class GUI_Finish extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
         } else {
 //            dispose();
-            new GUI_finish_insert().setVisible(true);
+            new GUI_finish_insert(this).setVisible(true);
         }
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
 
