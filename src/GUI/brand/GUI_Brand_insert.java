@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package GUI.brand;
 
 import GUI.polish.GUI_polish_insert;
@@ -20,15 +19,14 @@ public class GUI_Brand_insert extends javax.swing.JFrame {
     /**
      * Creates new form GUI_Brand_insert
      */
-    
     GUI_polish_insert formParent;
-            
+
     public GUI_Brand_insert() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
-    public GUI_Brand_insert(GUI_polish_insert form){
+
+    public GUI_Brand_insert(GUI_polish_insert form) {
         this.formParent = form;
         initComponents();
         this.setLocationRelativeTo(null);
@@ -117,28 +115,26 @@ public class GUI_Brand_insert extends javax.swing.JFrame {
 
             b.setName(jTextFieldNomeMarca.getText());
 
-          Facade fa = new Facade();
+            Facade fa = new Facade();
 
             fa.insert(b);
 
             int opc = JOptionPane.showConfirmDialog(rootPane, "Marca registrada com sucesso \nDeseja cadastrar outra marca?", "Cadastro", JOptionPane.OK_CANCEL_OPTION);
             if (opc == JOptionPane.YES_OPTION) {
             } else {
-                if(formParent != null){
-                   formParent.loadBrands();
-                   dispose();
-                }else{
+                if (formParent != null) {
+                    formParent.loadBrands();
                     dispose();
-                new GUI_Brands().setVisible(true);
+                } else {
+                    dispose();
+                    new GUI_Brands().setVisible(true);
                 }
-                    
-                
-                
+
             }
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());;
-        } 
+        }
 
         jTextFieldNomeMarca.setText("");
 
@@ -147,7 +143,7 @@ public class GUI_Brand_insert extends javax.swing.JFrame {
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
         dispose();
-      //  new GUI_Brands().setVisible(true);
+        //  new GUI_Brands().setVisible(true);
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     /**

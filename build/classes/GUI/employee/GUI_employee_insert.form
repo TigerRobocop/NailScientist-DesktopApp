@@ -35,46 +35,55 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="lblDOB" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtName" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
-                                  <Component id="txtPhone" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
-                                  <Component id="dtpDOB" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtName" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtPhone" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
+                                          <Component id="dtpDOB" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="57" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtPosition" min="-2" pref="221" max="-2" attributes="0"/>
+                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblLogin" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtPassword" pref="207" max="32767" attributes="0"/>
+                                  <Component id="txtLogin" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="rdComum" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="rdAdmin" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="txtPosition" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace pref="67" max="32767" attributes="0"/>
           </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-                  <Component id="btnInsert" min="-2" pref="87" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="btnGoBack" min="-2" pref="82" max="-2" attributes="0"/>
-                  <EmptySpace pref="114" max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="btnInsert" min="-2" pref="87" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Component id="btnGoBack" min="-2" pref="82" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -108,17 +117,22 @@
                   <Component id="rdComum" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="rdAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="127" max="32767" attributes="0"/>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="198" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnInsert" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnGoBack" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="71" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtLogin" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnInsert" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnGoBack" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -205,6 +219,20 @@
           <SerializedValue value="-84,-19,0,5,115,114,0,16,106,97,118,97,46,117,116,105,108,46,76,111,99,97,108,101,126,-8,17,96,-100,48,-7,-20,3,0,6,73,0,8,104,97,115,104,99,111,100,101,76,0,7,99,111,117,110,116,114,121,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,76,0,10,101,120,116,101,110,115,105,111,110,115,113,0,126,0,1,76,0,8,108,97,110,103,117,97,103,101,113,0,126,0,1,76,0,6,115,99,114,105,112,116,113,0,126,0,1,76,0,7,118,97,114,105,97,110,116,113,0,126,0,1,120,112,-1,-1,-1,-1,116,0,0,113,0,126,0,3,116,0,2,112,116,113,0,126,0,3,113,0,126,0,3,120"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblLogin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Login:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPassword">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Senha:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtLogin">
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="txtPassword">
     </Component>
   </SubComponents>
 </Form>

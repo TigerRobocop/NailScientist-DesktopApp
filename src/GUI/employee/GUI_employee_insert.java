@@ -17,14 +17,13 @@ import javax.swing.JOptionPane;
  * @author Livia
  */
 public class GUI_employee_insert extends javax.swing.JFrame {
-
+    
     SimpleDateFormat data;
     
     public GUI_employee_insert() {
         this.data = new SimpleDateFormat("dd-mm-yyyy");
         initComponents();
     }
-
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -44,6 +43,10 @@ public class GUI_employee_insert extends javax.swing.JFrame {
         rdComum = new javax.swing.JRadioButton();
         rdAdmin = new javax.swing.JRadioButton();
         dtpDOB = new datechooser.beans.DateChooserCombo();
+        lblLogin = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        txtLogin = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -92,6 +95,10 @@ public class GUI_employee_insert extends javax.swing.JFrame {
         }
         dtpDOB.setLocale(new java.util.Locale("pt", "", ""));
 
+        lblLogin.setText("Login:");
+
+        lblPassword.setText("Senha:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,35 +110,42 @@ public class GUI_employee_insert extends javax.swing.JFrame {
                         .addComponent(jLabel7))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblDOB)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(dtpDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtName)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(dtpDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 57, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(54, 54, 54)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(lblLogin)
+                                    .addComponent(lblPassword))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                                    .addComponent(txtLogin)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(rdComum)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(rdAdmin)))))))
-                .addContainerGap(18, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(95, 95, 95)
-                    .addComponent(btnInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(31, 31, 31)
-                    .addComponent(btnGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(114, Short.MAX_VALUE)))
+                                        .addComponent(rdAdmin))
+                                    .addComponent(txtPosition))))))
+                .addContainerGap(67, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(btnGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,14 +172,19 @@ public class GUI_employee_insert extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdComum)
                     .addComponent(rdAdmin))
-                .addContainerGap(127, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(198, 198, 198)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnInsert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(71, Short.MAX_VALUE)))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLogin)
+                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPassword)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnInsert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
@@ -175,39 +194,50 @@ public class GUI_employee_insert extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Employee s = new Employee();
-
+            
             s.setName(txtName.getText());
             
-            s.setDob(new Date(data.parse(dtpDOB.getText()).getTime()));
+            Date dob = null;
+            try {
+                dob = new Date(data.parse(dtpDOB.getText()).getTime());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Selecione uma DATA DE NASCIMENTO");
+            }
+            s.setDob(dob);
             
             s.setPhone(txtPhone.getText());
+            //            int teste = s.getPhone().length();
             s.setPosition(txtPosition.getText());            
             
             boolean isAdmin;
             if (rdAdmin.isSelected()) {
                 isAdmin = true;
-            }else{
+            } else {
                 isAdmin = false;
             }
             s.setAdmin(isAdmin);
-//          
-
+            
+            s.setLogin(txtLogin.getText());
+            s.setPassword(txtPassword.getText());
+            
             Facade fa = new Facade();
-
+            
             fa.insert(s);
-
-            int opc = JOptionPane.showConfirmDialog(rootPane, "Item cadastrado com sucesso \nDeseja cadastrar outro item?", "Novo Esmalte", JOptionPane.OK_CANCEL_OPTION);
+            
+            int opc = JOptionPane.showConfirmDialog(rootPane, "Funcionário cadastrado com sucesso \nDeseja cadastrar outro Funcionário?", "Novo Funcionário", JOptionPane.OK_CANCEL_OPTION);
             if (opc == JOptionPane.YES_OPTION) {
             } else {
                 dispose();
             }
-
-           txtName.setText("");
-           dtpDOB.setText("");
-           txtPosition.setText("");
-           txtPhone.setText("");
-           rdComum.setSelected(true);       
-
+            
+            txtName.setText("");
+            dtpDOB.setText("");
+            txtPosition.setText("");
+            txtPhone.setText("");
+            rdComum.setSelected(true); 
+            txtLogin.setText("");
+            txtPassword.setText("");
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
         }
@@ -264,9 +294,13 @@ public class GUI_employee_insert extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel lblDOB;
+    private javax.swing.JLabel lblLogin;
+    private javax.swing.JLabel lblPassword;
     private javax.swing.JRadioButton rdAdmin;
     private javax.swing.JRadioButton rdComum;
+    private javax.swing.JTextField txtLogin;
     private javax.swing.JTextField txtName;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JFormattedTextField txtPhone;
     private javax.swing.JTextField txtPosition;
     // End of variables declaration//GEN-END:variables
