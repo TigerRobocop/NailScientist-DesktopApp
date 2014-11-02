@@ -370,12 +370,12 @@ public class GUI_polish extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewPolishActionPerformed
 
     private void btnBrandMrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrandMrgActionPerformed
-        dispose();
+//        dispose();
         new GUI_Brands(logged).setVisible(true);
     }//GEN-LAST:event_btnBrandMrgActionPerformed
 
     private void btnFinishMgrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishMgrActionPerformed
-        dispose();
+//        dispose();
         new GUI_Finish(logged).setVisible(true);
     }//GEN-LAST:event_btnFinishMgrActionPerformed
 
