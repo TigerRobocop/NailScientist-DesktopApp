@@ -46,7 +46,7 @@ public class GUI_polish extends javax.swing.JFrame {
         listAll();
     }
 
-    private void listAll() {
+    public void listAll() {
         try {
             Facade f = new Facade();
 
@@ -318,12 +318,12 @@ public class GUI_polish extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         if (logged.isAdmin()) {
             deleteLine();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
-        }        
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void deleteLine(){
+    private void deleteLine() {
         Facade fa = new Facade();
         if (polishList.size() <= 0) {
             JOptionPane.showMessageDialog(rootPane, "Não há esmaltes cadastrados para excluir");
@@ -343,20 +343,20 @@ public class GUI_polish extends javax.swing.JFrame {
             }
         }
     }
-    
+
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         if (!logged.isAdmin()) {
             JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
         } else {
             if (polishList.size() <= 0) {
-            JOptionPane.showMessageDialog(rootPane, "Não há esmaltes cadastrados para alterar");
-        } else if (jTableTabela.getSelectedRow() < 0) {
-            JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
-        } else {
-            Polish s = polishList.get(jTableTabela.getSelectedRow());
-            new GUI_polish_update(s).setVisible(true);
-            this.dispose();
-        }
+                JOptionPane.showMessageDialog(rootPane, "Não há esmaltes cadastrados para alterar");
+            } else if (jTableTabela.getSelectedRow() < 0) {
+                JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
+            } else {
+                Polish s = polishList.get(jTableTabela.getSelectedRow());
+                new GUI_polish_update(s, this).setVisible(true);
+                // this.dispose();
+            }
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 

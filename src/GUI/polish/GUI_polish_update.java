@@ -24,10 +24,12 @@ public class GUI_polish_update extends javax.swing.JFrame {
     private Polish altPolish;
     private List<Brand> listBrands;
     private List<Finish> listFinish;
+    GUI_polish formParent;
     
-    public GUI_polish_update(Polish p) {
+    public GUI_polish_update(Polish p, GUI_polish form) {
         initComponents();
         this.altPolish = p;
+        this.formParent = form;
         this.setLocationRelativeTo(null);
         
         txtNome.setText(p.getName());
@@ -207,8 +209,9 @@ public class GUI_polish_update extends javax.swing.JFrame {
 
             fa.update(altPolish);
             JOptionPane.showMessageDialog(rootPane, "Dados do esmalte modificados com sucesso");
+            formParent.listAll();
             dispose();
-            new GUI_polish().setVisible(true);
+//            new GUI_polish().setVisible(true);
 
         } catch (NumberFormatException e) {
             //}
@@ -230,7 +233,7 @@ public class GUI_polish_update extends javax.swing.JFrame {
 
     private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
         dispose();
-        new GUI_polish().setVisible(true);
+//        new GUI_polish().setVisible(true);
     }//GEN-LAST:event_btnGoBackActionPerformed
 
     /**
@@ -263,7 +266,7 @@ public class GUI_polish_update extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_polish_update(new Polish()).setVisible(true);
+                new GUI_polish_update(new Polish(), new GUI_polish()).setVisible(true);
             }
         });
     }
