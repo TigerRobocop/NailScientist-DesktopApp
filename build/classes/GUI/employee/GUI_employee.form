@@ -48,7 +48,7 @@
               <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtNome" max="32767" attributes="0"/>
+              <Component id="txtFiltro" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -82,7 +82,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtFiltro" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
@@ -119,7 +119,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnBuscaFiltro">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Listar Todos"/>
+        <Property name="text" type="java.lang.String" value="Pesquisar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscaFiltroActionPerformed"/>
@@ -183,7 +183,7 @@
         <Property name="text" type="java.lang.String" value="Nome:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtNome">
+    <Component class="javax.swing.JTextField" name="txtFiltro">
     </Component>
   </SubComponents>
 </Form>

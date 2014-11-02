@@ -147,7 +147,7 @@ public class GUI_Brand_insert extends javax.swing.JFrame {
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
         dispose();
-        new GUI_Brands().setVisible(true);
+      //  new GUI_Brands().setVisible(true);
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     /**

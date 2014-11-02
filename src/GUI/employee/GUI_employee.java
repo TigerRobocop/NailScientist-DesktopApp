@@ -18,11 +18,22 @@ import javax.swing.table.DefaultTableModel;
 public class GUI_employee extends javax.swing.JFrame {
 
     List<Employee> employeeList;
+    Employee logged;
 
     public GUI_employee() {
         initComponents();
         this.setLocationRelativeTo(null);
 
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new String[]{"Nome", "Posição", "Admin", "DOB", "Telefone"});
+        jTableTabela.setModel(modelo);
+        listAll();
+    }
+
+    public GUI_employee(Employee emp) {
+        this.logged = emp;
+        initComponents();
+        this.setLocationRelativeTo(null);
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new String[]{"Nome", "Posição", "Admin", "DOB", "Telefone"});
         jTableTabela.setModel(modelo);
@@ -41,7 +52,7 @@ public class GUI_employee extends javax.swing.JFrame {
                 String isAdmin = "";
                 if (this.employeeList.get(i).isAdmin()) {
                     isAdmin = "SIM";
-                }else{
+                } else {
                     isAdmin = "NÃO";
                 }
                 modelo.addRow(new String[]{
@@ -72,7 +83,7 @@ public class GUI_employee extends javax.swing.JFrame {
         btnGoBack = new javax.swing.JButton();
         btnNewEmployee = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
+        txtFiltro = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -82,7 +93,7 @@ public class GUI_employee extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel6.setText("Busca por filtros");
 
-        btnBuscaFiltro.setText("Listar Todos");
+        btnBuscaFiltro.setText("Pesquisar");
         btnBuscaFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscaFiltroActionPerformed(evt);
@@ -156,7 +167,7 @@ public class GUI_employee extends javax.swing.JFrame {
                 .addGap(78, 78, 78)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNome)
+                .addComponent(txtFiltro)
                 .addGap(235, 235, 235))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,7 +193,7 @@ public class GUI_employee extends javax.swing.JFrame {
                     .addComponent(btnNewEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(2, 2, 2)
                 .addComponent(btnBuscaFiltro)
@@ -200,79 +211,81 @@ public class GUI_employee extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscaFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaFiltroActionPerformed
-        // busca de esmalte de acordo com os campos de filtro preenchidos
-        Facade f = new Facade();
-//        try {
+        try {
+            Facade f = new Facade();
+            Employee filtro = new Employee();
 
-//            Polish filtro = new Polish();
-//
-//            filtro.getBrand().setName(jTextFieldFiltroMarca.getText());
-//            filtro.setName(jTextFieldFilltroNome.getText());
-//            filtro.setColor(jTextFieldFiltroCor.getText());
-//            filtro.getFinish().setName(jTextFieldFiltroFinalizacao.getText());
-//
-//            this.polishList = f.listAllPolish();
-//            DefaultTableModel modelo = new DefaultTableModel();
-//            modelo.setColumnIdentifiers(new String[]{"Marca", "Nome", "Finalização", "Descrição da Cor"});
-//
-//            for (int i = 0; i < this.polishList.size(); i++) {
-//                modelo.addRow(new String[]{
-//                    this.polishList.get(i).getBrand().getName(),
-//                    this.polishList.get(i).getName(),
-//                    this.polishList.get(i).getFinish().getName(),
-//                    this.polishList.get(i).getColor()});
-//        }
-//        jTableTabela.setModel(modelo);
-//        jTextFieldFiltroMarca.setText("");
-//        jTextFieldFilltroNome.setText("");
-//        jTextFieldFiltroCor.setText("");
-//        jTextFieldFiltroFinalizacao.setText("");
-//
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
-//            jTextFieldFiltroMarca.setText("");
-//        }
-//
-//        // }
+            filtro.setName(txtFiltro.getText());
+
+            this.employeeList = f.findByFilters(filtro);
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.setColumnIdentifiers(new String[]{"Nome", "Posição", "Admin", "DOB", "Telefone"});
+
+            for (int i = 0; i < this.employeeList.size(); i++) {
+                String isAdmin = "";
+                if (this.employeeList.get(i).isAdmin()) {
+                    isAdmin = "SIM";
+                } else {
+                    isAdmin = "NÃO";
+                }
+                modelo.addRow(new String[]{
+                    this.employeeList.get(i).getName(),
+                    this.employeeList.get(i).getPosition(),
+                    isAdmin,
+                    this.employeeList.get(i).getDob().toString(),
+                    this.employeeList.get(i).getPhone()});
+            }
+            jTableTabela.setModel(modelo);
+            
+            txtFiltro.setText("");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
+
     }//GEN-LAST:event_btnBuscaFiltroActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // exclui o esmalte selecionado na tabela
-
-        Facade fa = new Facade();
-        if (employeeList.size() <= 0) {
-            JOptionPane.showMessageDialog(rootPane, "Não há Funcionários cadastrados para excluir");
-        } else if (jTableTabela.getSelectedRow() < 0) {
-            JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
+        if (!logged.isAdmin()) {
+            JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
         } else {
-            try {
-                int opc = JOptionPane.showConfirmDialog(rootPane, "Deseja excluir o esmalte da lista?", "Excluir", JOptionPane.OK_CANCEL_OPTION);
-                if (opc == JOptionPane.YES_OPTION) {
-                    fa.delete(this.employeeList.get(jTableTabela.getSelectedRow()));
-                    JOptionPane.showMessageDialog(rootPane, "Funcionário excluído com sucesso");
-
-       
-
-                listAll();
-
+            Facade fa = new Facade();
+            if (employeeList.size() <= 0) {
+                JOptionPane.showMessageDialog(rootPane, "Não há Funcionários cadastrados para excluir");
+            } else if (jTableTabela.getSelectedRow() < 0) {
+                JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
             } else {
-            }
+                try {
+                    int opc = JOptionPane.showConfirmDialog(rootPane, "Deseja excluir o esmalte da lista?", "Excluir", JOptionPane.OK_CANCEL_OPTION);
+                    if (opc == JOptionPane.YES_OPTION) {
+                        fa.delete(this.employeeList.get(jTableTabela.getSelectedRow()));
+                        JOptionPane.showMessageDialog(rootPane, "Funcionário excluído com sucesso");
 
-        } catch (Exception fe) {
-            JOptionPane.showMessageDialog(rootPane, fe.getMessage());
-        }
+                        listAll();
+
+                    } else {
+                    }
+
+                } catch (Exception fe) {
+                    JOptionPane.showMessageDialog(rootPane, fe.getMessage());
+                }
+            }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        if (employeeList.size() <= 0) {
-            JOptionPane.showMessageDialog(rootPane, "Não há esmaltes cadastrados para alterar");
-        } else if (jTableTabela.getSelectedRow() < 0) {
-            JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
+        if (!logged.isAdmin()) {
+            JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
         } else {
-            Employee s = employeeList.get(jTableTabela.getSelectedRow());
-            new GUI_employee_update(s).setVisible(true);
-            this.dispose();
+            if (employeeList.size() <= 0) {
+                JOptionPane.showMessageDialog(rootPane, "Não há esmaltes cadastrados para alterar");
+            } else if (jTableTabela.getSelectedRow() < 0) {
+                JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
+            } else {
+                Employee s = employeeList.get(jTableTabela.getSelectedRow());
+                new GUI_employee_update(s).setVisible(true);
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -282,7 +295,11 @@ public class GUI_employee extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGoBackActionPerformed
 
     private void btnNewEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewEmployeeActionPerformed
-        new GUI_employee_insert().setVisible(true);
+        if (!logged.isAdmin()) {
+            JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
+        } else {
+            new GUI_employee_insert().setVisible(true);
+        }
     }//GEN-LAST:event_btnNewEmployeeActionPerformed
 
     /**
@@ -331,6 +348,6 @@ public class GUI_employee extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableTabela;
-    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables
 }

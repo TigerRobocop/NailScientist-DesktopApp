@@ -269,7 +269,7 @@ public class GUI_polish_insert extends javax.swing.JFrame {
     private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
         // TODO add your handling code here:
         dispose();
-        new GUI_polish().setVisible(true);
+      //  new GUI_polish().setVisible(true);
     }//GEN-LAST:event_btnGoBackActionPerformed
 
     private void btnFisishMgrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFisishMgrActionPerformed

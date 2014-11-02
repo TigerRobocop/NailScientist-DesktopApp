@@ -104,7 +104,7 @@ public class GUI_finish_insert extends javax.swing.JFrame {
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
         dispose();
-        new GUI_Finish().setVisible(true);
+       // new GUI_Finish().setVisible(true);
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonSalvarFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarFinishActionPerformed
