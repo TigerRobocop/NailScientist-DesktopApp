@@ -17,10 +17,12 @@ import javax.swing.JOptionPane;
 public class GUI_finish_update extends javax.swing.JFrame {
 
     private Finish altFinish;
+    private GUI_Finish formParent;
     
-    public GUI_finish_update(Finish f) {
+    public GUI_finish_update(Finish f, GUI_Finish form) {
         initComponents();
         this.altFinish = f;
+        this.formParent = form;
          this.setLocationRelativeTo(null);
         jTextFieldTipoFinalizacao.setText(f.getName());
     }
@@ -33,6 +35,7 @@ public class GUI_finish_update extends javax.swing.JFrame {
         jTextFieldTipoFinalizacao = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -48,6 +51,13 @@ public class GUI_finish_update extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel7.setText("Editar Acabamento");
 
+        jButton2.setText("Voltar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,10 +67,13 @@ public class GUI_finish_update extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2))
                     .addComponent(jLabel7)
-                    .addComponent(jTextFieldTipoFinalizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addComponent(jTextFieldTipoFinalizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,7 +85,9 @@ public class GUI_finish_update extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldTipoFinalizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -86,8 +101,9 @@ public class GUI_finish_update extends javax.swing.JFrame {
 
             fa.update(altFinish);
             JOptionPane.showMessageDialog(rootPane, "Finalização alterada com sucesso!");
+            formParent.listarFinalizacao();
             dispose();
-            new GUI_Finish().setVisible(true);
+//            new GUI_Finish().setVisible(true);
 
         } catch (NumberFormatException e) {
             //}
@@ -95,6 +111,10 @@ public class GUI_finish_update extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
         } 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,13 +146,14 @@ public class GUI_finish_update extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_finish_update(new Finish()).setVisible(true);
+                new GUI_finish_update(new Finish(), new GUI_Finish()).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextFieldTipoFinalizacao;

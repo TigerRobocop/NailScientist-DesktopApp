@@ -238,8 +238,8 @@ public class GUI_Finish extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
             } else {
                 Finish f = finishList.get(jTableTabelaFinalizacao.getSelectedRow());
-                new GUI_finish_update(f).setVisible(true);
-                this.dispose();
+                new GUI_finish_update(f, this).setVisible(true);
+//                this.dispose();
             }
         }
     }//GEN-LAST:event_jButtonEditarActionPerformed
