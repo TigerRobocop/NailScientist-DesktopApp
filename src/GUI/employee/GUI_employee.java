@@ -40,7 +40,7 @@ public class GUI_employee extends javax.swing.JFrame {
         listAll();
     }
 
-    private void listAll() {
+    public void listAll() {
         try {
             Facade f = new Facade();
 
@@ -283,8 +283,8 @@ public class GUI_employee extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
             } else {
                 Employee s = employeeList.get(jTableTabela.getSelectedRow());
-                new GUI_employee_update(s).setVisible(true);
-                this.dispose();
+                new GUI_employee_update(s, this).setVisible(true);
+//                this.dispose();
             }
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -298,7 +298,7 @@ public class GUI_employee extends javax.swing.JFrame {
         if (!logged.isAdmin()) {
             JOptionPane.showMessageDialog(rootPane, "Funcionalidade indisponível");
         } else {
-            new GUI_employee_insert().setVisible(true);
+            new GUI_employee_insert(this).setVisible(true);
         }
     }//GEN-LAST:event_btnNewEmployeeActionPerformed
 

@@ -19,9 +19,11 @@ import javax.swing.JOptionPane;
 public class GUI_employee_insert extends javax.swing.JFrame {
     
     SimpleDateFormat data;
+    GUI_employee formParent;
     
-    public GUI_employee_insert() {
+    public GUI_employee_insert(GUI_employee form) {
         this.data = new SimpleDateFormat("dd-mm-yyyy");
+        this.formParent = form;
         initComponents();
     }
     
@@ -223,6 +225,7 @@ public class GUI_employee_insert extends javax.swing.JFrame {
             Facade fa = new Facade();
             
             fa.insert(s);
+            formParent.listAll();
             
             int opc = JOptionPane.showConfirmDialog(rootPane, "Funcionário cadastrado com sucesso \nDeseja cadastrar outro Funcionário?", "Novo Funcionário", JOptionPane.OK_CANCEL_OPTION);
             if (opc == JOptionPane.YES_OPTION) {
@@ -246,7 +249,7 @@ public class GUI_employee_insert extends javax.swing.JFrame {
     private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
         // TODO add your handling code here:
         dispose();
-        new GUI_employee().setVisible(true);
+//        new GUI_employee().setVisible(true);
     }//GEN-LAST:event_btnGoBackActionPerformed
 
     /**
@@ -279,7 +282,7 @@ public class GUI_employee_insert extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_employee_insert().setVisible(true);
+                new GUI_employee_insert(new GUI_employee()).setVisible(true);
             }
         });
     }

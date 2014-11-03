@@ -215,8 +215,8 @@ public class GUI_Brands extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Nenhuma linha selecionada");
             } else {
                 Brand m = brandList.get(jTableTabelaMarcas.getSelectedRow());
-                new GUI_Brand_update(m).setVisible(true);
-                this.dispose();
+                new GUI_Brand_update(m, this).setVisible(true);
+//                this.dispose();
             }
         }
     }//GEN-LAST:event_btnEditarActionPerformed

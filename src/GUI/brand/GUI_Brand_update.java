@@ -18,8 +18,10 @@ public class GUI_Brand_update extends javax.swing.JFrame {
 
     
     private Brand altBrand;
+    GUI_Brands formParent;
     
-    public GUI_Brand_update(Brand b) {
+    public GUI_Brand_update(Brand b, GUI_Brands form) {
+        this.formParent = form;
         initComponents();
         this.altBrand = b;
          this.setLocationRelativeTo(null);
@@ -39,6 +41,7 @@ public class GUI_Brand_update extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -54,23 +57,33 @@ public class GUI_Brand_update extends javax.swing.JFrame {
 
         jLabel2.setText("Nome: ");
 
+        jButton1.setText("Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel7))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnUpdate)
-                            .addComponent(jTextFieldNomeMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(72, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnUpdate)
+                                .addGap(28, 28, 28)
+                                .addComponent(jButton1))
+                            .addComponent(jTextFieldNomeMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(jLabel7)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,7 +95,9 @@ public class GUI_Brand_update extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldNomeMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnUpdate)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUpdate)
+                    .addComponent(jButton1))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -96,8 +111,9 @@ public class GUI_Brand_update extends javax.swing.JFrame {
 
             fa.update(altBrand);
             JOptionPane.showMessageDialog(rootPane, "Marca alterada com sucesso!");
+            formParent.listarMarcas();
             dispose();
-            new GUI_Brands().setVisible(true);
+//            new GUI_Brands().setVisible(true);
 
         } catch (NumberFormatException e) {
             //}
@@ -105,6 +121,10 @@ public class GUI_Brand_update extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,13 +156,14 @@ public class GUI_Brand_update extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_Brand_update(new Brand()).setVisible(true);
+                new GUI_Brand_update(new Brand(), new GUI_Brands()).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextFieldNomeMarca;
